@@ -1,0 +1,16 @@
+server:
+  port: 8555
+spring:
+  application:
+    name: API-Gateway
+  cloud:
+    gateway:
+      routes:
+      - id: Offer-Service
+        uri: lb://OfferService
+        predicates:
+        - Path=/offer/**
+      - id: order-Service
+        uri: lb://OrderService
+        predicates:
+        - Path=/order/**
